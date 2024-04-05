@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <!-- Add additional CSS in static file -->
   {% load static %}
@@ -18,48 +19,78 @@
 <div class="row">
   <div class="col-sm-2">
   {% block sidebar %}
-  <ul class="sidebar-nav">
+  <div class="w3-sidebar w3-bar-block w3-light-grey" style="width:25%">
+    <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-hover-blue">Home</a>
+    <a href="{% url 'bookinstances' %}" class="w3-bar-item w3-button w3-hover-blue">All book copies</a>
+    <a href="{% url 'books' %}" class="w3-bar-item w3-button w3-hover-blue">All books</a>
+    <a href="{% url 'authors' %}" class="w3-bar-item w3-button w3-hover-blue">All authors</a>
+    <a href="{% url 'genres' %}" class="w3-bar-item w3-button w3-hover-blue">All genres</a>
+    <a href="{% url 'languages' %}" class="w3-bar-item w3-button w3-hover-blue">All languages</a>
+  
+  
+  <!-- <ul class="sidebar-nav">
     <li><a href="{% url 'index' %}">Home</a></li>
     <li><a href="{% url 'bookinstances' %}">All book copies</a></li>
     <li><a href="{% url 'books' %}">All books</a></li>
     <li><a href="{% url 'authors' %}">All authors</a></li>
     <li><a href="{% url 'genres' %}">All genres</a></li>
     <li><a href="{% url 'languages' %}">All languages</a></li>
-  </ul>
+  </ul> -->
+<br>
+<br>
 
-  <ul class="sidebar-nav">
+  <!-- <ul class="w3-sidebar w3-bar-block w3-light-grey" style="width:25%"> -->
    {% if user.is_authenticated %}
-     <li>User: {{ user.get_username }}</li>
-     <li><a href="{% url 'my-borrowed' %}">My borrowed</a></li>
-     <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+   <strong>User: {{ user.get_username }}</strong>
+     <!-- <li> -->
+      <a href="{% url 'my-borrowed' %}"class="w3-bar-item w3-button w3-hover-blue">My borrowed</a>
+    <!-- </li> -->
+     <!-- <li> -->
+      <a href="{% url 'logout'%}?next={{request.path}}"class="w3-bar-item w3-button w3-hover-blue">Logout</a>
+    <!-- </li> -->
    {% else %}
-     <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+     <!-- </li> -->
+      <a href="{% url 'login'%}?next={{request.path}}"class="w3-bar-item w3-button w3-hover-blue">Login</a>
+    <!-- </li> -->
    {% endif %}
-  </ul>
+  <!-- </ul> -->
 
    {% if user.is_staff %}
    <hr>
-   <ul class="sidebar-nav">
-   <li>Staff</li>
-   <li><a href="{% url 'all-borrowed' %}">All borrowed</a></li>
+   <!-- <ul class="w3-sidebar w3-bar-block w3-light-grey" style="width:25%"> -->
+   
+    <strong>Staff</strong>
+   <!-- <li> -->
+    <a href="{% url 'all-borrowed' %}"class="w3-bar-item w3-button w3-hover-blue">All borrowed</a>
+  <!-- </li> -->
    {% if perms.catalog.add_genre %}
-     <li><a href="{% url 'genre-create' %}">Create genre</a></li>
+     <!-- <li> -->
+      <a href="{% url 'genre-create' %}"class="w3-bar-item w3-button w3-hover-blue">Create genre</a>
+    <!-- </li> -->
    {% endif %}
    {% if perms.catalog.add_language %}
-     <li><a href="{% url 'language-create' %}">Create language</a></li>
+     <!-- <li> -->
+      <a href="{% url 'language-create' %}"class="w3-bar-item w3-button w3-hover-blue">Create language</a>
+    <!-- </li> -->
    {% endif %}
    {% if perms.catalog.add_author %}
-     <li><a href="{% url 'author-create' %}">Create author</a></li>
+     <!-- <li> -->
+      <a href="{% url 'author-create' %}"class="w3-bar-item w3-button w3-hover-blue">Create author</a>
+    <!-- </li> -->
    {% endif %}
    {% if perms.catalog.add_book %}
-     <li><a href="{% url 'book-create' %}">Create book</a></li>
+     <!-- <li> -->
+      <a href="{% url 'book-create' %}"class="w3-bar-item w3-button w3-hover-blue">Create book</a>
+    <!-- </li> -->
    {% endif %}
    {% if perms.catalog.add_bookinstance %}
-     <li><a href="{% url 'bookinstance-create' %}">create BookInstance</a></li>
+     <!-- <li> -->
+      <a href="{% url 'bookinstance-create' %}"class="w3-bar-item w3-button w3-hover-blue">create BookInstance</a>
+    <!-- </li> -->
    {% endif %}
-   </ul>
+   <!-- </ul> -->
    {% endif %} 
-
+  </div>
 {% endblock %}
   </div>
   <div class="col-sm-10 ">

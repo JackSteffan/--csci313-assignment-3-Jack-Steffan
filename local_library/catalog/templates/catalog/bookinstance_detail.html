@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+<div style="margin-left:25%">
 <h1>BookInstance: {{ bookinstance.book.title }}</h1>
 
 <p><strong>Author:</strong> <a href="{{ bookinstance.book.author.get_absolute_url }}">{{ bookinstance.book.author }}</a></p>
@@ -15,6 +15,7 @@
     <a href="{{ bookinstance.book.get_absolute_url }}">All copies</a></p>
   </li>
 </ul>
+</div>
 {% endblock %}
 
 
@@ -23,14 +24,19 @@
 
   {% if perms.catalog.change_bookinstance or perms.catalog.delete_bookinstance %}
   <hr>
-  <ul class="sidebar-nav">
+  <!-- <ul class="sidebar-nav"> -->
+    <div class="w3-sidebar w3-bar-block w3-light-grey" style="width:25%">
     {% if perms.catalog.change_bookinstance %}
-      <li><a href="{% url 'bookinstance-update' bookinstance.id %}">Update BookInstance</a></li>
+      <!-- <li> -->
+        <a href="{% url 'bookinstance-update' bookinstance.id %}"class="w3-bar-item w3-button w3-hover-blue">Update BookInstance</a>
+      <!-- </li> -->
     {% endif %}
     {% if perms.catalog.delete_bookinstance %}
-      <li><a href="{% url 'bookinstance-delete' bookinstance.id %}">Delete BookInstance</a></li>
+      <!-- <li> -->
+        <a href="{% url 'bookinstance-delete' bookinstance.id %}"class="w3-bar-item w3-button w3-hover-blue">Delete BookInstance</a>
+      <!-- </li> -->
     {% endif %}
-  </ul>
+  <!-- </ul> -->
   {% endif %}
-
+</div>
 {% endblock %}

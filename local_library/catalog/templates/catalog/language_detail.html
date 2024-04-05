@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+<div style="margin-left:25%">
 <h1>Language: {{ language.name }}</h1>
 
-<div style="margin-left:20px;margin-top:20px">
+
 <h4>Books in language</h4>
 
 <ul>
@@ -16,7 +16,7 @@
   <li>There are no books in this language.</li>
   {% endfor %}
 </ul>
-
+</div>
 {% endblock %}
 
 
@@ -25,14 +25,19 @@
 
   {% if perms.catalog.change_language or perms.catalog.delete_language %}
   <hr>
-  <ul class="sidebar-nav">
+  <!-- <ul class="sidebar-nav"> -->
+  <div class="w3-sidebar w3-bar-block w3-light-grey" style="width:25%">
     {% if perms.catalog.change_language %}
-      <li><a href="{% url 'language-update' language.id %}">Update Language</a></li>
+      <!-- <l/i> -->
+        <a href="{% url 'language-update' language.id %}"class="w3-bar-item w3-button w3-hover-blue">Update Language</a>
+      <!-- </li> -->
     {% endif %}
     {% if not language.book_set.all and perms.catalog.delete_language %}
-      <li><a href="{% url 'language-delete' language.id %}">Delete Language</a></li>
+      <!-- <li> -->
+        <a href="{% url 'language-delete' language.id %}"class="w3-bar-item w3-button w3-hover-blue">Delete Language</a>
+      <!-- </li> --> 
     {% endif %}
-    </ul>
+    <!-- </ul> -->
   {% endif %}
-
+</div>
 {% endblock %}

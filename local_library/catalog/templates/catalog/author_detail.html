@@ -1,11 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+<div style="margin-left:25%">
 <h1>Author: {{ author }} </h1>
 <p>{{author.date_of_birth}} - {% if author.date_of_death %}{{author.date_of_death}}{% endif %}</p>
 
-<div style="margin-left:20px;margin-top:20px">
+
 <h4>Books</h4>
 
 <dl>
@@ -25,14 +25,19 @@
 
   {% if perms.catalog.change_author or perms.catalog.delete_author %}
   <hr>
-  <ul class="sidebar-nav">
+  <!-- <ul class="w3-sidebar w3-bar-block w3-light-grey" style="width:25%"> -->
+  <div class="w3-sidebar w3-bar-block w3-light-grey" style="width:25%">
     {% if perms.catalog.change_author %}
-      <li><a href="{% url 'author-update' author.id %}">Update author</a></li>
+      <!-- <li> -->
+        <a href="{% url 'author-update' author.id %}"class="w3-bar-item w3-button w3-hover-blue">Update author</a>
+      <!-- </li> -->
     {% endif %}
     {% if not author.book_set.all and perms.catalog.delete_author %}
-      <li><a href="{% url 'author-delete' author.id %}">Delete author</a></li>
+      <!-- <li> -->
+        <a href="{% url 'author-delete' author.id %}"class="w3-bar-item w3-button w3-hover-blue">Delete author</a>
+      <!-- </li> -->
     {% endif %}
-    </ul>
+    <!-- </ul> -->
   {% endif %}
-
+</div>
 {% endblock %}

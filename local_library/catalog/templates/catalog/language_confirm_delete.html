@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+<div style="margin-left:25%">
 <h1>Delete Language: {{ language }}</h1>
 
 <p>Are you sure you want to delete the language?</p>
@@ -10,5 +10,5 @@
   {% csrf_token %}
   <input type="submit" action="" value="Yes, delete.">
 </form>
-
+</div>
 {% endblock %}

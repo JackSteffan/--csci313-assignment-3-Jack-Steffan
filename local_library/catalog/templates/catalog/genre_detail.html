@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+<div style="margin-left:25%">
 <h1>Genre: {{ genre.name }}</h1>
 
-<div style="margin-left:20px;margin-top:20px">
+
 <h4>Books in genre</h4>
 
 <ul>
@@ -16,7 +16,7 @@
   <li>There are no books in this genre.</li>
   {% endfor %}
 </ul>
-
+</div>
 {% endblock %}
 
 
@@ -25,14 +25,19 @@
 
   {% if perms.catalog.change_genre or perms.catalog.delete_genre %}
   <hr>
-  <ul class="sidebar-nav">
+  <!-- <ul class="sidebar-nav"> -->
+    <div class="w3-sidebar w3-bar-block w3-light-grey" style="width:25%">
     {% if perms.catalog.change_genre %}
-    <li><a href="{% url 'genre-update' genre.id %}">Update Genre</a></li>
+    <!-- <li> -->
+      <a href="{% url 'genre-update' genre.id %}"class="w3-bar-item w3-button w3-hover-blue">Update Genre</a>
+    <!-- </li> -->
     {% endif %}
     {% if not genre.book_set.all and perms.catalog.delete_genre %}
-      <li><a href="{% url 'genre-delete' genre.id %}">Delete Genre</a></li>
+      <!-- <li> -->
+        <a href="{% url 'genre-delete' genre.id %}"class="w3-bar-item w3-button w3-hover-blue">Delete Genre</a>
+      <!-- </li> -->
     {% endif %}
-    </ul>
+    <!-- </ul> -->
   {% endif %}
-
+</div>
 {% endblock %}

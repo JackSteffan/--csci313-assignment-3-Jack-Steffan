@@ -1,6 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<div style="margin-left:25%">
     <h1>All Borrowed Books</h1>
 
     {% if bookinstance_list %}
@@ -15,5 +16,6 @@
 
     {% else %}
       <p>There are no books borrowed.</p>
-    {% endif %}       
+    {% endif %}     
+  </div>  
 {% endblock %}

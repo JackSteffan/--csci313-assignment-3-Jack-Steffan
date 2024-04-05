@@ -1,6 +1,13 @@
-.sidebar-nav {
+/* .sidebar-nav {
     margin-top: 20px;
     padding: 0;
     list-style: none;
+} */
+
+h1{
+    color: rgb(42, 134, 255);
 }
 
+h2{
+    color: rgb(42, 134, 255);
+}
